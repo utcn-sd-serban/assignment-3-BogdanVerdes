@@ -1,13 +1,13 @@
 package ro.utcn.sd.vba.a1.repository.memory;
 
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.Question;
+import ro.utcn.sd.vba.a1.entity.Question;
 import ro.utcn.sd.vba.a1.repository.api.QuestionRepository;
 
 import java.util.*;
 @Component
 public class InMemoryQuestionRepository implements QuestionRepository{
-    private int currentId = 1;
+    private int currentId = 0;
     private final Map<Integer,Question> data = new HashMap<>();
 
     @Override

@@ -85,22 +85,9 @@ export default class RestClient {
             });
     };
 
-    loadAllAnswers = () => {
-        return fetch(BASE_URL + "/answers", {
-            method: "GET",
-            headers: {
-                "Authorization": this.authorization
-            }
-        }).then(response => response.json())
-            .catch(() => {
-                alert("Unknown user");
-                window.location.assign("#/");
-            });
-    };
-
     findAnswersByQuestionId = (questionId) => {
         questionId = parseInt(questionId);
-        return fetch(BASE_URL + "/answersForQuestion/" + questionId, {
+        return fetch(BASE_URL + "/question/" + questionId + "/answers", {
             method: "GET",
             headers: {
                 "Authorization": this.authorization

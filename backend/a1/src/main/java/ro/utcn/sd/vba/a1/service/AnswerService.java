@@ -4,13 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.utcn.sd.vba.a1.dto.AnswerDTO;
-import ro.utcn.sd.vba.a1.dto.QuestionDTO;
-import ro.utcn.sd.vba.a1.model.Answer;
-import ro.utcn.sd.vba.a1.model.Question;
+import ro.utcn.sd.vba.a1.entity.Answer;
+import ro.utcn.sd.vba.a1.entity.Question;
 import ro.utcn.sd.vba.a1.repository.api.RepositoryFactory;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

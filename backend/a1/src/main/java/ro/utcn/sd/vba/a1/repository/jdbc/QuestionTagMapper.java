@@ -1,7 +1,7 @@
 package ro.utcn.sd.vba.a1.repository.jdbc;
 
 import org.springframework.jdbc.core.RowMapper;
-import ro.utcn.sd.vba.a1.model.QuestionTag;
+import ro.utcn.sd.vba.a1.entity.QuestionTag;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

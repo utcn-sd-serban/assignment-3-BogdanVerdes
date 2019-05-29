@@ -2,13 +2,11 @@ package ro.utcn.sd.vba.a1.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ro.utcn.sd.vba.a1.model.Tag;
+import ro.utcn.sd.vba.a1.entity.Tag;
 import ro.utcn.sd.vba.a1.repository.api.RepositoryFactory;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

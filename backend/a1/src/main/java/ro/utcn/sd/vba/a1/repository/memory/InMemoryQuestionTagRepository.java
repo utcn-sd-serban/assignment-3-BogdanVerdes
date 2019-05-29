@@ -1,9 +1,9 @@
 package ro.utcn.sd.vba.a1.repository.memory;
 
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.Question;
-import ro.utcn.sd.vba.a1.model.QuestionTag;
-import ro.utcn.sd.vba.a1.model.Tag;
+import ro.utcn.sd.vba.a1.entity.Question;
+import ro.utcn.sd.vba.a1.entity.QuestionTag;
+import ro.utcn.sd.vba.a1.entity.Tag;
 import ro.utcn.sd.vba.a1.repository.api.QuestionTagRepository;
 
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import java.util.Map;
 
 @Component
 public class InMemoryQuestionTagRepository implements QuestionTagRepository{
-    Map<Integer,QuestionTag> data = new HashMap<>();
-    private int currentId = 1;
+    private Map<Integer,QuestionTag> data = new HashMap<>();
+    private int currentId = 0;
 
     @Override
     public QuestionTag save(QuestionTag questionTag) {
@@ -53,5 +53,10 @@ public class InMemoryQuestionTagRepository implements QuestionTagRepository{
             }
         }
         return tags;
+    }
+
+    @Override
+    public List<QuestionTag> findAll() {
+        return new ArrayList<>(data.values());
     }
 }

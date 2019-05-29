@@ -5,31 +5,31 @@ import questionsListPresenter from "../presenter/questionsListPresenter";
 
 
 const mapModelStateToComponentState = modelState => ({
-    questions: modelState.questions,
-}
+        questions: modelState.questions,
+    }
 );
 
-export default class SmartQuestionsList extends Component{
-    constructor(){
-        super();
+export default class SmartQuestionsList extends Component {
+    constructor(props) {
+        super(props);
         this.state = mapModelStateToComponentState(question.state);
         this.listener = modelState => this.setState(mapModelStateToComponentState(modelState));
-        question.addListener("change",this.listener);
+        question.addListener("change", this.listener);
         questionsListPresenter.onInit();
     }
 
-    render(){
-        return(
-            <QuestionsList 
-            onAskQuestion={questionsListPresenter.onAskQuestion}
-            onChange={questionsListPresenter.onChange}
-            onSearch={questionsListPresenter.onSearch}
-            onListAnswers={questionsListPresenter.onListAnswers}
-            questions={this.state.questions}/>
+    render() {
+        return (
+            <QuestionsList
+                onAskQuestion={questionsListPresenter.onAskQuestion}
+                onChange={questionsListPresenter.onChange}
+                onSearch={questionsListPresenter.onSearch}
+                onListAnswers={questionsListPresenter.onListAnswers}
+                questions={this.state.questions}/>
         );
     }
 
-    componentWillUnmount(){
-        question.removeListener("change",this.listener);
+    componentWillUnmount() {
+        question.removeListener("change", this.listener);
     }
 }

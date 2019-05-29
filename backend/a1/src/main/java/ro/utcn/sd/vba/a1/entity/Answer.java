@@ -1,5 +1,4 @@
-package ro.utcn.sd.vba.a1.model;
-
+package ro.utcn.sd.vba.a1.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -10,25 +9,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
-@Entity(name = "Question")
+@Entity(name = "Answer")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Question {
+public class Answer{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    private String body;
+    private String text;
     private Date creation;
-    private String username;
-    private int score;
+    private int idq;
+    private String author;
+    private Integer score;
 
-    public Question(String title, String body, String user){
-        this.title = title;
-        this.body = body;
-        this.username = user;
+    public Answer(String text,String author,int idq){
+        this.author = author;
+        this.text = text;
+        this.idq = idq;
         this.creation = new Date(System.currentTimeMillis());
         this.score = 0;
     }
+
 }

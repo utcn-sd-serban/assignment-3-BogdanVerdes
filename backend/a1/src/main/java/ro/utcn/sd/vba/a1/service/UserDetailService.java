@@ -17,7 +17,7 @@ public class UserDetailService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        ro.utcn.sd.vba.a1.model.User user = repositoryFactory.createUserRepository().findByUsername(username)
+        ro.utcn.sd.vba.a1.entity.User user = repositoryFactory.createUserRepository().findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("Username not found"));
         return new User(user.getUsername(),user.getPassword(),Collections.singletonList(new SimpleGrantedAuthority("USER")));
     }

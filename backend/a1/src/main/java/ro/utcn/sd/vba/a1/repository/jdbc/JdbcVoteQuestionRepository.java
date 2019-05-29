@@ -4,11 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.Question;
-import ro.utcn.sd.vba.a1.model.VoteQuestion;
+import ro.utcn.sd.vba.a1.entity.Question;
+import ro.utcn.sd.vba.a1.entity.VoteQuestion;
 import ro.utcn.sd.vba.a1.repository.api.VoteQuestionRepository;
 
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;

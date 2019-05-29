@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.Question;
-import ro.utcn.sd.vba.a1.model.QuestionTag;
-import ro.utcn.sd.vba.a1.model.Tag;
+import ro.utcn.sd.vba.a1.entity.Question;
+import ro.utcn.sd.vba.a1.entity.QuestionTag;
+import ro.utcn.sd.vba.a1.entity.Tag;
 import ro.utcn.sd.vba.a1.repository.api.QuestionTagRepository;
 
-import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,4 +54,8 @@ public class JdbcQuestionTagRepository implements QuestionTagRepository{
 
     }
 
+    @Override
+    public List<QuestionTag> findAll() {
+        return new ArrayList<>();
+    }
 }

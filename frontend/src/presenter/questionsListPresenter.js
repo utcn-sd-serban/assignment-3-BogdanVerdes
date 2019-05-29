@@ -10,8 +10,9 @@ class QuestionsListPresenter {
         question.changeNewQuestionProperty(property,value);
     }
     onSearch(){
-        question.searchQuestion(question.state.newQuestion.title);
-        window.location.assign("#/search");
+        question.searchQuestion(question.state.newQuestion.title)
+            .then(() => window.location.assign("#/search"));
+
     }
     onListAnswers(index){
         answer.listAnwsers(index);

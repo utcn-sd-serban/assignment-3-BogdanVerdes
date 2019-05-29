@@ -5,7 +5,7 @@ import answersListPresenter from "../presenter/answersListPresenter";
 
 
 const mapModelStateToComponentState = modelState => ({
-    searchedAnswers: modelState.searchedAnswers,
+    answers: modelState.answers,
 }
 );
 
@@ -15,14 +15,14 @@ export default class SmartAnswersList extends Component{
         this.state = mapModelStateToComponentState(answer.state);
         this.listener = modelState => this.setState(mapModelStateToComponentState(modelState));
         answer.addListener("change",this.listener);
-        answersListPresenter.onInit(answer.state.qId);
+        //answersListPresenter.onInit(this.state.answers[0].qId);
     }
 
     render(){
         return(
             <AnswersList 
-            answers = {this.state.searchedAnswers}
-            qId = {this.state.searchedAnswers[0].qId}
+            answers = {this.state.answers}
+            qId = {this.state.answers[0].qId}
             onAnswerQuestion = {answersListPresenter.onAnswerQuestion}
             onChange = {answersListPresenter.onChange}
             onEdit = {answersListPresenter.onEdit}

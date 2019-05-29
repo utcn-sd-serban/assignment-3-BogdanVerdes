@@ -1,4 +1,4 @@
-package ro.utcn.sd.vba.a1.model;
+package ro.utcn.sd.vba.a1.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,21 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "VoteQuestion")
+@Entity(name = "Tags_has_Question")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VoteQuestion {
+public class QuestionTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String nameTag;
     private int idQuestion;
-    private String author;
-    private boolean voteType;
 
-    public VoteQuestion(int idQuestion,String author,boolean voteType){
-        this.idQuestion = idQuestion;
-        this.author = author;
-        this.voteType = voteType;
+    public QuestionTag(String nameTag, int idQ) {
+        id = 0;
+        this.nameTag = nameTag;
+        this.idQuestion = idQ;
     }
 }

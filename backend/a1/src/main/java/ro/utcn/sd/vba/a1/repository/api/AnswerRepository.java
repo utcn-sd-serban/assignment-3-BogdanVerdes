@@ -1,8 +1,8 @@
 package ro.utcn.sd.vba.a1.repository.api;
 
 
-import ro.utcn.sd.vba.a1.model.Answer;
-import ro.utcn.sd.vba.a1.model.Question;
+import ro.utcn.sd.vba.a1.entity.Answer;
+import ro.utcn.sd.vba.a1.entity.Question;
 
 import java.sql.SQLException;
 import java.util.List;

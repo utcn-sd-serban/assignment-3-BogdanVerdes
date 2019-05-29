@@ -1,7 +1,7 @@
 package ro.utcn.sd.vba.a1.dto;
 
 import lombok.Data;
-import ro.utcn.sd.vba.a1.model.User;
+import ro.utcn.sd.vba.a1.entity.User;
 
 @Data
 public class UserDTO {

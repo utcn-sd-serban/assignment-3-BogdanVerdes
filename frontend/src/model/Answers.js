@@ -45,7 +45,7 @@ class Answer extends EventEmitter{
             }
             this.emit("change",this.state);
     }
-
+    
     listAnwsers(qId){
         return getClient().findAnswersByQuestionId(qId)
         .then(answers => {
@@ -54,9 +54,9 @@ class Answer extends EventEmitter{
                     ...this.state,
                     answers: answers
                 };
-                this.emit("changeAnswer", this.state);
+                this.emit("change", this.state);
             }
-        })
+        });
     }
 
     modifyTextForAnswer(newAnswer) {
@@ -70,7 +70,7 @@ class Answer extends EventEmitter{
             ...this.state,
             answers: answers
         };
-        this.emit("changeAnswer", this.state);
+        this.emit("change", this.state);
     }
 
     editAnswer(answerId) {

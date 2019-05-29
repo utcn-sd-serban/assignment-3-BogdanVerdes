@@ -12,32 +12,39 @@ import ro.utcn.sd.vba.a1.command.user.GetAllUsersCommand;
 import ro.utcn.sd.vba.a1.command.user.LoginUserCommand;
 import ro.utcn.sd.vba.a1.command.user.RegisterUserCommand;
 import ro.utcn.sd.vba.a1.dto.UserDTO;
+import ro.utcn.sd.vba.a1.event.BaseEvent;
 import ro.utcn.sd.vba.a1.service.UserService;
+
+import java.sql.SQLException;
 
 @RestController
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    // so we can publish to the websocket
     private final SimpMessagingTemplate messagingTemplate;
     private final Invoker invoker;
 
     @PostMapping("/register")
-    public Object create(@RequestBody UserDTO userDTO) {
+    public Object create(@RequestBody UserDTO userDTO) throws SQLException {
         invoker.setCommand(new RegisterUserCommand(userService, userDTO.getUsername(),userDTO.getPassword(),userDTO.getEmail()));
         return invoker.invoke();
     }
 
     @PostMapping("/login")
-    public Object readOne(@RequestBody UserDTO userDTO) {
+    public Object readOne(@RequestBody UserDTO userDTO) throws SQLException {
         invoker.setCommand(new LoginUserCommand(userService, userDTO.getUsername(),userDTO.getPassword()));
         return invoker.invoke();
     }
 
     @GetMapping("/users")
-    public Object readAll(){
+    public Object readAll() throws SQLException {
         invoker.setCommand(new GetAllUsersCommand(userService));
         return invoker.invoke();
     }
 
+    @EventListener(BaseEvent.class)
+    public void handleEvent(BaseEvent event) {
+        System.out.println("GOT AN EVENT " + event.toString());
+        messagingTemplate.convertAndSend("/topic/events", event);
+    }
 }

@@ -2,9 +2,10 @@ import user from "../model/Users";
 
 class QuestionsListPresenter {
     onLogin(){
+        user.state.currentUser = user.state.newUser.username;
         user.loginUser(user.state.newUser.username,user.state.newUser.password)
         .then(()=>{
-            alert("merge");
+            //alert("merge");
             user.searchUser(user.state.newUser.username,user.state.newUser.password);
             window.location.assign("#/questions");
         
@@ -12,7 +13,7 @@ class QuestionsListPresenter {
         );
     }
     onRegister(){
-        
+        user.state.currentUser = user.state.newUser.username;
         user.registerUser(user.state.newUser.username,user.state.newUser.password)
         .then(()=> { 
             user.addUser(user.state.newUser.username,user.state.newUser.password);

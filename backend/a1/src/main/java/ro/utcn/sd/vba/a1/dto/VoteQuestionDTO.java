@@ -1,7 +1,7 @@
 package ro.utcn.sd.vba.a1.dto;
 
 import lombok.Data;
-import ro.utcn.sd.vba.a1.model.VoteQuestion;
+import ro.utcn.sd.vba.a1.entity.VoteQuestion;
 
 @Data
 public class VoteQuestionDTO {

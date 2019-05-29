@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import {EventEmitter} from "events";
 import RestClient from "../rest/RestClient";
 import WebSocketListener from "../websocket/WebSocketListener";
 import question from "./Questions";
@@ -11,18 +11,18 @@ export function getClient() {
     return client;
 }
 
-class User extends EventEmitter{
-    constructor(){
+class User extends EventEmitter {
+    constructor() {
         super();
         this.state = {
-            users : [{
+            users: [{
                 username: "bogdan",
                 password: "verdes"
             }, {
                 username: "verdes",
                 password: "bogdan"
             }],
-            newUser:{
+            newUser: {
                 username: "",
                 password: ""
             },
@@ -39,25 +39,25 @@ class User extends EventEmitter{
         this.emit("change", this.state);
     }
 
-    addUser(username,password){
+    addUser(username, password) {
         this.state = {
             ...this.state,
             users: this.state.users.concat([{
                 username: username,
                 password: password
             }]),
-            currentUser:{
+            currentUser: {
                 username: username,
                 password: password
             }
         }
-        
-        this.emit("change",this.state);
+
+        this.emit("change", this.state);
     }
 
     loginUser(username, password) {
         client = new RestClient(username, password);
-        wsListener.client.deactivate();
+        //wsListener.client.deactivate();
         wsListener = new WebSocketListener(username, password);
         this.onEvent(wsListener);
         return client.loginUser(username, password)
@@ -72,18 +72,6 @@ class User extends EventEmitter{
             );
     }
 
-    onEvent(wsListener) {
-        wsListener.on("event", event => {
-            if (event.type === "USER_CREATED") {                
-                this.addUser(event.user.username,event.user.password);
-            }
-            if (event.type === "QUESTION_CREATED") {
-                question.addQuestion(event.question.title,event.question.body,
-                    event.question.tags,event.user.username);
-            }           
-        });
-    }
-
     loadUsers() {
         return client.loadAllUsers()
             .then(users => {
@@ -95,30 +83,29 @@ class User extends EventEmitter{
             });
     }
 
-    
 
     registerUser(username, password) {
         client = new RestClient(username, password);
-        wsListener.client.deactivate();
+        //wsListener.client.deactivate();
         wsListener = new WebSocketListener(username, password);
         this.onEvent(wsListener);
-        
+
         return client.createUser(username, password)
-            .then(user => this.addUser(username,password));
+            .then(user => this.addUser(username, password));
     }
 
-    changeNewUserProperty(property,value){
-            this.state = {
-                ...this.state,
-                newUser:{
-                    ...this.state.newUser,
-                    [property]:value
-                }
+    changeNewUserProperty(property, value) {
+        this.state = {
+            ...this.state,
+            newUser: {
+                ...this.state.newUser,
+                [property]: value
             }
-            this.emit("change",this.state);
+        }
+        this.emit("change", this.state);
     }
 
-    logout(){
+    logout() {
         question.clearQuestions();
         this.changeMainStateProperty("currentUser", "");
         window.location.assign("#/");
@@ -126,7 +113,7 @@ class User extends EventEmitter{
         wsListener.client.deactivate();
     }
 
-    searchUser(username,password){
+    searchUser(username, password) {
         let newUser = user.state.newUser;
         let users = user.state.users;
 
@@ -139,6 +126,17 @@ class User extends EventEmitter{
 
             }
         }
+    }
+
+    onEvent(wsListener) {
+        wsListener.on("event", event => {
+            if (event.eventType === "USER_CREATED") {
+                this.addUser(event.user.username, event.user.password);
+            }
+            if (event.eventType === "QUESTION_CREATED") {
+                question.appendQuestion(event.question);
+            }
+        });
     }
 }
 

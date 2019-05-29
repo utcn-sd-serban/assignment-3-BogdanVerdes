@@ -3,8 +3,8 @@ package ro.utcn.sd.vba.a1.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ro.utcn.sd.vba.a1.model.Answer;
-import ro.utcn.sd.vba.a1.model.VoteAnswer;
+import ro.utcn.sd.vba.a1.entity.Answer;
+import ro.utcn.sd.vba.a1.entity.VoteAnswer;
 import ro.utcn.sd.vba.a1.repository.api.RepositoryFactory;
 
 import java.sql.SQLException;

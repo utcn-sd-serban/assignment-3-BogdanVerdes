@@ -1,7 +1,7 @@
 package ro.utcn.sd.vba.a1.repository.memory;
 
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.User;
+import ro.utcn.sd.vba.a1.entity.User;
 import ro.utcn.sd.vba.a1.repository.api.UserRepository;
 
 import java.util.*;

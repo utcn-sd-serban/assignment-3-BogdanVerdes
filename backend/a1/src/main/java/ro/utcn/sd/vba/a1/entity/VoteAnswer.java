@@ -1,4 +1,4 @@
-package ro.utcn.sd.vba.a1.model;
+package ro.utcn.sd.vba.a1.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

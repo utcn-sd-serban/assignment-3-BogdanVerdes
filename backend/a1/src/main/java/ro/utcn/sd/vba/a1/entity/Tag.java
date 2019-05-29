@@ -1,4 +1,4 @@
-package ro.utcn.sd.vba.a1.model;
+package ro.utcn.sd.vba.a1.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Tag {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String name = "";
+    private String name;
+
 }

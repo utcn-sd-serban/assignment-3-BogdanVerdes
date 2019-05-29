@@ -3,13 +3,10 @@ package ro.utcn.sd.vba.a1.repository.jdbc;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.User;
+import ro.utcn.sd.vba.a1.entity.User;
 import ro.utcn.sd.vba.a1.repository.api.UserRepository;
 
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;

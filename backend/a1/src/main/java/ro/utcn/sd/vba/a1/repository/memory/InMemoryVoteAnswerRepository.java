@@ -1,8 +1,8 @@
 package ro.utcn.sd.vba.a1.repository.memory;
 
 import org.springframework.stereotype.Component;
-import ro.utcn.sd.vba.a1.model.Answer;
-import ro.utcn.sd.vba.a1.model.VoteAnswer;
+import ro.utcn.sd.vba.a1.entity.Answer;
+import ro.utcn.sd.vba.a1.entity.VoteAnswer;
 import ro.utcn.sd.vba.a1.repository.api.VoteAnswerRepository;
 
 import java.util.ArrayList;

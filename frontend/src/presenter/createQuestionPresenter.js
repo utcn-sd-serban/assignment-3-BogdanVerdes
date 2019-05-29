@@ -6,13 +6,11 @@ class CreateQuestionPresenter {
     onAskQuestion(){
         question.addQuestion(question.state.newQuestion.title,
             question.state.newQuestion.body,
-            question.state.newQuestion.tags,user.state.currentUser.username);
+            question.state.newQuestion.tags,user.state.currentUser);
         question.changeNewQuestionProperty("title","");
         question.changeNewQuestionProperty("body","");
         question.changeNewQuestionProperty("tags","");
-        question.createQuestion(question.state.newQuestion.title, 
-            question.state.newQuestion.body, user.state.currentUser.username,
-            question.state.newQuestion.tags);
+
         window.location.assign("#/questions");
     }
 
